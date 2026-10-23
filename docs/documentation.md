@@ -24,7 +24,7 @@ Project Janitor features a clean, minimalist desktop application interface built
 ### 1. System Overview Dashboard
 Live monitoring of indexed storage volume, category distribution bar charts, recorded journal operations, and local Ollama / Gemma AI availability—with zero invented statistics.
 
-![System Overview Dashboard](https://raw.githubusercontent.com/Harshitagarwal113/Project-Janitor/main/frontend/src/assets/hero.png)
+![Project Janitor Cover](https://raw.githubusercontent.com/Harshitagarwal113/Project-Janitor/main/docs/cover.png)
 
 ### 2. Multi-Stage Workflow
 - **Folder Scanner**: Scans user-authorized directories while strictly protecting drive roots (`C:\`, `D:\`) from accidental selection.

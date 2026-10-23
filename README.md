@@ -10,6 +10,8 @@
 [![Ollama](https://img.shields.io/badge/Ollama-Gemma_2B-white?style=flat&logo=ollama&logoColor=black)](https://ollama.com)
 [![Privacy: 100% Offline](https://img.shields.io/badge/Privacy-100%25_Local-black)](#security--safety-invariants)
 
+![Project Janitor Cover](docs/cover.png)
+
 ---
 
 ## Overview

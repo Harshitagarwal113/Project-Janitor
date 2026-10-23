@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Project Janitor Product Mockup</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      width: 1600px;
+      height: 900px;
+      overflow: hidden;
+      background-color: #06080E;
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: #F8FAFC;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+    }
+
+    /* Ambient Glow Backgrounds */
+    .bg-grid {
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(rgba(255, 255, 255, 0.07) 1px, transparent 1px);
+      background-size: 28px 28px;
+      opacity: 0.6;
+      pointer-events: none;
+    }
+    .glow-top {
+      position: absolute;
+      top: -120px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 1100px;
+      height: 420px;
+      background: radial-gradient(ellipse, rgba(99, 102, 241, 0.24) 0%, rgba(59, 130, 246, 0.12) 45%, transparent 70%);
+      pointer-events: none;
+    }
+    .glow-accent {
+      position: absolute;
+      bottom: -80px;
+      right: 5%;
+      width: 700px;
+      height: 420px;
+      background: radial-gradient(circle, rgba(245, 158, 11, 0.12) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .glow-left {
+      position: absolute;
+      bottom: -80px;
+      left: 5%;
+      width: 600px;
+      height: 420px;
+      background: radial-gradient(circle, rgba(16, 185, 129, 0.10) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    /* Header Section */
+    .header {
+      position: relative;
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding-top: 24px;
+    }
+    .badge-event {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(245, 158, 11, 0.12);
+      border: 1px solid rgba(245, 158, 11, 0.4);
+      color: #FBBF24;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 5px 15px;
+      border-radius: 9999px;
+      box-shadow: 0 0 16px rgba(245, 158, 11, 0.18);
+    }
+    .badge-event .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #F59E0B;
+      box-shadow: 0 0 8px #F59E0B;
+    }
+    .title-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 8px;
+    }
+    .app-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, #1E293B, #0F172A);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+    }
+    h1.title {
+      font-size: 36px;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      background: linear-gradient(180deg, #FFFFFF 20%, #E2E8F0 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .subtitle {
+      font-size: 14.5px;
+      color: #94A3B8;
+      font-weight: 400;
+      margin-top: 3px;
+      letter-spacing: -0.01em;
+    }
+
+    /* Badges Row */
+    .badges-row {
+      display: flex;
+      gap: 10px;
+      margin-top: 10px;
+    }
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      padding: 4px 12px;
+      border-radius: 7px;
+      font-size: 11.5px;
+      font-weight: 600;
+      color: #E2E8F0;
+      backdrop-filter: blur(8px);
+    }
+    .pill-icon {
+      font-size: 12px;
+    }
+
+    /* Window Mockup Frame */
+    .window-container {
+      position: relative;
+      z-index: 10;
+      width: 1280px;
+      margin-top: 18px;
+      border-radius: 12px;
+      background: #0F172A;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      box-shadow: 
+        0 25px 70px -10px rgba(0, 0, 0, 0.9),
+        0 0 0 1px rgba(255, 255, 255, 0.1),
+        0 0 50px -10px rgba(99, 102, 241, 0.28);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    .window-header {
+      height: 34px;
+      background: linear-gradient(180deg, #1E293B, #0F172A);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 16px;
+    }
+    .traffic-dots {
+      display: flex;
+      gap: 7px;
+    }
+    .traffic-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+    .dot-red { background: #EF4444; }
+    .dot-yellow { background: #F59E0B; }
+    .dot-green { background: #10B981; }
+
+    .window-title {
+      font-size: 11px;
+      font-weight: 600;
+      color: #94A3B8;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .window-status {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 10.5px;
+      font-weight: 600;
+      color: #10B981;
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .status-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #10B981;
+      box-shadow: 0 0 8px #10B981;
+    }
+
+    .window-body {
+      width: 100%;
+      position: relative;
+      background: #0B0F17;
+      line-height: 0;
+    }
+    .window-body img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* Floating Verified Card */
+    .floating-card {
+      position: absolute;
+      bottom: 20px;
+      right: 24px;
+      background: rgba(15, 23, 42, 0.94);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(16px);
+      padding: 10px 16px;
+      border-radius: 10px;
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.65);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      z-index: 20;
+    }
+    .floating-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      background: rgba(16, 185, 129, 0.16);
+      border: 1px solid rgba(16, 185, 129, 0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+    }
+    .floating-text-title {
+      font-size: 11.5px;
+      font-weight: 700;
+      color: #F8FAFC;
+      line-height: 1.3;
+    }
+    .floating-text-sub {
+      font-size: 10.5px;
+      color: #94A3B8;
+      font-family: 'JetBrains Mono', monospace;
+      line-height: 1.3;
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-grid"></div>
+  <div class="glow-top"></div>
+  <div class="glow-accent"></div>
+  <div class="glow-left"></div>
+
+  <!-- Header -->
+  <div class="header">
+    <div class="badge-event">
+      <div class="dot"></div>
+      Hacktoberfest 2026 &times; DEV Community &bull; Week 3 Challenge
+    </div>
+    
+    <div class="title-row">
+      <div class="app-icon">🧹</div>
+      <h1 class="title">Project Janitor</h1>
+    </div>
+    
+    <p class="subtitle">Local, privacy-first desktop storage organizer & SHA-256 duplicate manager</p>
+
+    <div class="badges-row">
+      <div class="pill"><span class="pill-icon">🧠</span> 100% Local Gemma 2B AI</div>
+      <div class="pill"><span class="pill-icon">⚡</span> Cryptographic SHA-256 Verification</div>
+      <div class="pill"><span class="pill-icon">↩️</span> Transactional Rollback Safety</div>
+      <div class="pill"><span class="pill-icon">🛡️</span> Zero Cloud Telemetry</div>
+    </div>
+  </div>
+
+  <!-- Real Window Mockup -->
+  <div class="window-container">
+    <div class="window-header">
+      <div class="traffic-dots">
+        <div class="traffic-dot dot-red"></div>
+        <div class="traffic-dot dot-yellow"></div>
+        <div class="traffic-dot dot-green"></div>
+      </div>
+      <div class="window-title">
+        <span>project-janitor // cleanup-plan-review</span>
+      </div>
+      <div class="window-status">
+        <div class="status-dot"></div>
+        <span>LOCAL ENGINE &bull; 127.0.0.1:8000</span>
+      </div>
+    </div>
+    <div class="window-body">
+      <img src="screenshots/cleanup_plan.png" alt="Project Janitor Cleanup Plan Interface">
+      
+      <!-- Floating Verified Card -->
+      <div class="floating-card">
+        <div class="floating-icon">🛡️</div>
+        <div>
+          <div class="floating-text-title">Deterministic Safety Verified</div>
+          <div class="floating-text-sub">SHA-256 Verified &bull; Reversible SQLite Journal</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
